@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from django.views.generic import DetailView
+
+from .models import Post, Comment
+from .form import CommentForm
 
 
 class PostList(generic.ListView):
@@ -11,3 +14,8 @@ class PostList(generic.ListView):
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+
+class PostView(DetailView):
+    model = Post
+    template_name = "core/post.html"

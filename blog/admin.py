@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post , Comment
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -8,7 +8,8 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'post', 'created_on')
 
 admin.site.register(Post, PostAdmin)
-
-# Register your models here.
+admin.site.register(Comment, CommentAdmin)
